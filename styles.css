@@ -1,0 +1,10 @@
+.container {
+    display: flex;
+    gap: 10px;
+    flex-flow: column;
+}
+.container div {
+    border: 2px solid black;
+    max-width: 800px;
+    padding: 10px;
+}
