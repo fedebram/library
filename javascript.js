@@ -19,29 +19,37 @@ submitButton.addEventListener("click", (event) => {
 
   myLibrary[bookCount] = new Book(
     bookCount,
-    title, 
-    author, 
-    pages, 
+    title,
+    author,
+    pages,
     checkbox ? "Read" : "Not read"
   );
-  
+
   dialog.close();
   displayBooks();
   bookCount++;
 });
 
 
-function Book(id, title, author, pages, read) {
-  this.id = id;
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.read = read;
+class Book {
+  constructor(id, title, author, pages, read) {
+    this.id = id;
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.read = read;
+  }
+  getRead () {
+    this.read = "Not Read";
+  }
 }
 
+
+/*
 Book.prototype.getRead = function () {
- this.read = "Not Read";
+  this.read = "Not Read";
 }
+*/
 
 
 function displayBooks() {
@@ -79,15 +87,14 @@ function displayBooks() {
     let idxToRemove = -1;
     for (let idx = 0; idx < myLibrary.length; idx++) {
       const book = myLibrary[idx];
-      if (book.id == bookId)
-      {
+      if (book.id == bookId) {
         idxToRemove = idx;
         break;
       }
     }
 
     // sintassi 2
-   // let idxToRemove2 = myLibrary.findIndex(book => book.id == bookId);
+    // let idxToRemove2 = myLibrary.findIndex(book => book.id == bookId);
 
     // rimuovo se trovato
     if (idxToRemove != -1) {
@@ -99,7 +106,7 @@ function displayBooks() {
 
     // let divBook = document.querySelector(`#_${bookCount}`);
   });
-  
+
   form.reset();
 }
 
